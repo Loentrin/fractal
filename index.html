@@ -133,6 +133,10 @@ c.addEventListener("mouseup", function(e){
 	mouse.down = false
 })
 
+c.addEventListener("mouseleave", function(e){
+	mouse.down = false
+})
+
 c.addEventListener("mousewheel", function(e){
 	if(e.deltaY < 0){
 		camera.scale /= 0.9
