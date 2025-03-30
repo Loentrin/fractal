@@ -15,6 +15,7 @@
 </head>
 <body>
 <canvas id="c"></canvas>
+<script src="root_method.js"></script>
 <script>
 var c = document.getElementById("c")
 var ctx = c.getContext("2d")
@@ -23,40 +24,6 @@ c.height = window.innerHeight
 
 var data = ctx.createImageData(c.width, c.height)
 var buf = new Uint32Array(data.data.buffer)
-
-class ComplexNumber{
-	constructor(r, i){
-		this.r = r
-		this.i = i
-	}
-	add(x){
-		return new ComplexNumber(this.r + x.r, this.i + x.i)
-	}
-	mul(x){
-		return new ComplexNumber(this.r*x.r - this.i*x.i, this.r*x.i + this.i*x.r)
-	}
-	div(x){
-		return new ComplexNumber((this.r*x.r + this.i*x.i) / (x.r*x.r + x.i*x.i), (this.i*x.r - this.r*x.i) / (x.r*x.r + x.i*x.i),)
-	}
-}
-
-
-var coeffs = [1, -1, 1, 0, 0, 1]
-
-var degree = coeffs.length-1
-
-var roots = [[-1.32471795724475, 0], [0, 1], [0, -1], [0.662358978622373, 0.562279512062301], [0.662358978622373, -0.562279512062301]]
-
-var values = []
-
-for(var i = 0; i < roots.length; i++){
-	roots[i] = new ComplexNumber(roots[i][0], roots[i][1])
-}
-
-var d_coeffs = []
-for(var i = 1; i <= degree; i++){
-	d_coeffs.push(coeffs[i]*i)
-}
 
 var camera = {x: 0, y: 0, scale: 1,}
 var mouse = {x: 0, y: 0, prevX: 0, prevY: 0, down: false}
@@ -99,7 +66,7 @@ function step(){
 				}
 			}
 
-			var cols = [[228,0,121], [48,167,32], [222,77,77], [43,186,222], [243,226,42]]
+			var cols = [[228,0,121], [48,167,32], [222,77,77], [43,186,222], [243,226,42], [80,120,60]]
 
 			var alpha = 0
 			var red = cols[winnerColor][0]
